@@ -1,5 +1,5 @@
 <template>
-<p>我是写入内容</p>
+<p>你是大傻子</p>
 </template>
 <script>
 export default {};
