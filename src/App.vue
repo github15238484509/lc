@@ -1,13 +1,12 @@
 <template>
   <div class="flex">
     <div class="left">
-      <conment :currenUser = currenUser></conment>
-      <writecon></writecon>
+      <conment :currenUser="currenUser"></conment>
+      <writecon @sendWrite="sendWrite" :currenUser="currenUser"></writecon>
     </div>
     <div class="right">
       <preson :userList="userList" @emitEvent="emitEvent"></preson>
     </div>
-    
   </div>
 </template>
 <script>
@@ -18,17 +17,20 @@ export default {
   data() {
     return {
       userList: [
-        {name: "笑话",src:   require("./assets/0.jpg") },
-        { name: "天才", src: require("./assets/1.jpg")  },
-        { name: "傻瓜", src: require("./assets/2.jpg")  },
-        { name: "孙悟空", src: require("./assets/3.jpg")  }
+        { name: "笑话", src: require("./assets/0.jpg"), currenhua: [] },
+        { name: "天才", src: require("./assets/1.jpg"), currenhua: [] },
+        { name: "傻瓜", src: require("./assets/2.jpg"), currenhua: [] },
+        { name: "孙悟空", src: require("./assets/3.jpg"), currenhua: [] }
       ],
-      currenUser:{name: "笑话",src:   require("./assets/0.jpg") }
+      currenUser: ""
     };
   },
-  methods:{
-    emitEvent(e){
-      this.currenUser = this.userList[e]
+  methods: {
+    emitEvent(e) {
+      this.currenUser = this.userList[e];
+    },
+    sendWrite(e) {
+      this.currenUser.currenhua.push(e);
     }
   },
   components: {
